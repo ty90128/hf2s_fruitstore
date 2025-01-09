@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 會員註冊</title>
+        <LINK rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart_empty.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>  
+        <div style="background-color: #121212; width: 100vw; height: 115px;"></div>
+        <form id="registerForm">
+            <div class="register_div">
+                <div class="register_content">      
+                    <input id="name" class="name" type="text" name="name" placeholder="姓  名">
+                    <input id="phone" class="phone" type="text" name="phone" placeholder="電  話">
+                    <input id="address" class="address" type="text" name="address" placeholder="地  址">  
+                    <input id="email" class="email" type="email" name="email" placeholder="E-mail">
+                    <div class="password_wrapper">
+                        <input id="password" class="password" name="password" type="password" placeholder="密    碼">
+                        <button id="eye_btn" class="eye_btn"></button>
+                    </div>
+                    <div class="password_wrapper">
+                        <input id="password_check" class="password_check" type="password" placeholder="密碼確認">
+                        <button id="eye_btn2" class="eye_btn"></button>
+                        <p id="register_tip" class="register_tip"></p>
+                    </div> 
+                    <button id="register_btn" class="register_btn" type="submit" name="register_btn">註 冊</button>
+                    <span style="margin-bottom: 10px;">已有帳號？<a href="user_login.html"> 去登入</a></span>
+                </div>   
+                <hr class="hr"> 
+                <div class="register_title">
+                    <div  class="register_title1">R E G I S T E R</div>
+                    <div class="register_title2">w e l c o m</div>
+                </div>   
+            </div> 
+        </form> 
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style=vertical-align:middle> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>
+    </footer>   
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"> //加載jQuery庫 </script> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var password = document.getElementById("password");
+        var passwordCheck = document.getElementById("password_check");
+        var eye_btn = document.getElementById("eye_btn");
+        var eye_btn2 = document.getElementById("eye_btn2");
+
+        // 眼睛按鈕點擊事件：顯示/隱藏密碼
+        eye_btn.addEventListener('click', function(event) {
+            event.preventDefault();  // 防止按鈕點擊時觸發表單提交或頁面跳轉
+            if (password.type === 'password') {
+                password.type = 'text';
+                eye_btn.style.backgroundImage = "url('./hf2s_img/eye_hide.png')";
+            } else {
+                password.type = 'password';
+                eye_btn.style.backgroundImage = "url('./hf2s_img/eye.png')";
+            }
+        });
+        eye_btn2.addEventListener('click', function(event) {
+            event.preventDefault();  // 防止按鈕點擊時觸發表單提交或頁面跳轉
+            if (passwordCheck.type === 'password') {
+                passwordCheck.type = 'text';
+                eye_btn2.style.backgroundImage = "url('./hf2s_img/eye_hide.png')";
+            } else {
+                passwordCheck.type = 'password';
+                eye_btn2.style.backgroundImage = "url('./hf2s_img/eye.png')";
+            }
+        });
+
+        // 註冊按鈕點擊事件
+        var name = document.getElementById("name");
+        var phone = document.getElementById("phone");
+        var adress = document.getElementById("adress");
+        var email = document.getElementById("email");
+        var register_tip = document.getElementById("register_tip");
+        var register_btn = document.getElementById("register_btn");
+
+        function isEmailValid(email) {
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //check Email格式是否有效
+            // ^: 表示字串的開始位置、$: 表示字串的結尾
+            // [^\s@]+:[ ]: 方括號表示一個字符集，任何在方括號內的字符都被允許。
+            // ^: 在字符集內，表示取反，即不允許某些字符。
+            // \s: 表示空白字符（如空格、換行符等）。
+            // @: 代表@符號。
+            // +: 表示前面的字符（此處是[^\s@]，即非空白字符且不是@的字符）出現一次或多次
+            //\.: 反斜杠\用來轉義.，因為.在正則表達式中是特殊字符，表示"任何單個字符"。這裡轉義後的.表示字面上的句號（.），用來分隔域名和頂級域名（如.com、.org）。
+            return re.test(email);
+            //檢查 變數email 是否符合正則表達式 re 的條件。
+        }
+
+        function isPhoneValid(phone) {
+            var re = /^[0-9]{10}$/;   //check電話號碼是否為10位數字
+            // ^：表示字串的開始、$：表示字串的結束。
+            // [0-9]：表示數字的範圍，即0到9的任何一個數字。
+            // {10}：表示前面的字符（在這裡是數字）出現10次。
+            return re.test(phone);
+            //檢查 變數phone 是否符合正則表達式 re 的條件。
+        }
+
+        register_btn.addEventListener('click', function(event) { 
+            // 基本欄位檢查
+            var inputs = [
+                { field: name, message: "請輸入姓名" },
+                { field: phone, message: "請輸入電話號碼" },
+                { field: adress, message: "請輸入地址" },
+                { field: email, message: "請輸入E-mail" },
+                { field: password, message: "請輸入密碼" },
+                { field: passwordCheck, message: "請再次確認密碼" }
+            ];
+
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].field.value === '') {
+                    register_tip.innerText = inputs[i].message;
+                    event.preventDefault();
+                    return;
+                }
+            }
+
+            if (!isEmailValid(email.value)) {
+                register_tip.innerText = "請輸入有效的E-mail地址";
+                event.preventDefault();
+                return;
+            }
+
+            if (!isPhoneValid(phone.value)) {
+                register_tip.innerText = "請輸入有效的電話號碼";
+                event.preventDefault();
+                return;
+            }
+
+            if (password.value !== passwordCheck.value) {
+                register_tip.innerText = "請輸入一致的密碼";
+                event.preventDefault();
+                return;
+            }
+
+            register_tip.innerText = "";  // 清除提示
+        });
+
+        // 當表單提交時觸發
+        $('#registerForm').on('submit', function(e) {  //當表單提交時，使用jQuery監聽submit事件
+            e.preventDefault(); // 防止表單提交刷新頁面
+
+            $.ajax({  //發起AJAX請求，將表單數據發送到後端API
+                url: 'http://localhost/fruitstore/register.php',  // 後端處理註冊的 API
+                type: 'POST',
+                data: $(this).serialize(),  // 將表單數據序列化
+                dataType: 'json',  // 告訴 jQuery 期待的回應格式是 JSON
+                success: function(response) {
+                    if (response.success) {
+                        alert('註冊成功！');  // API 回傳成功的訊息
+                        window.location.href = 'user_login.html';  // 跳轉到登入頁面
+                    } else {
+                        alert(response.message || '註冊失敗，請檢查輸入的資料。');  // 顯示失敗訊息
+                    }
+                },
+                error: function() {
+                    alert('註冊失敗，請稍後再試。');
+                }
+            });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 首頁</title>
+        <LINK rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+    </head>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart_empty.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <p ><a href="#"><img id="back_to_top" src="./hf2s_img/back_to_top.png"></Back></a></p> <!--設定返回到最上端的icon按鈕-->
+        </nav>
+    </header>
+    <main>
+        <div id="title_img_div">
+            <img src="./hf2s_img/title1.jpg" id="title_img" alt="title_img">
+        </div>
+        <div id="text">
+            <p id="text1">--------------------用心嚴選高品質水果禮盒的水果行--------------------</p>
+            <p id="text2">- 提供精品水果禮盒、會議水果餐盒外送、新鮮現切水果杯、公司禮盒送禮，<b>滿 5000 元</b>也提供<b>高雄市區</b>外送協助！-</p>
+        </div>
+        <form method="post" action="addCart.php">
+            <ul id="fruits_list">
+                <div class="fruits_list_font">
+                    <a href="mango.html"><img src="./hf2s_img/fruits_list/mango.jpg"></a>
+                    <div class="fruits_list_content"><a href="mango.html" class="fruits_list_tiltleLink">愛文芒果禮盒</a><br>2000元
+                        <p class="fruits_list_intro">愛文芒果成熟後會散發濃郁十足的熱帶水果香氣， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_mango">
+                        <p><a href="mango.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_mango"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="mellon.html"><img src="./hf2s_img/fruits_list/mellon.jpg"></a>
+                    <div class="fruits_list_content"><a href="mellon.html" class="fruits_list_tiltleLink">哈密瓜禮盒</a><br>1300元
+                        <p class="fruits_list_intro">哈密瓜外皮呈網紋脈絡明顯而分布均勻， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_mellon">
+                        <p><a href="mellon.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_mellon"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="cherry.html"><img src="./hf2s_img/fruits_list/cherry.jpg"></a>
+                    <div class="fruits_list_content"><a href="cherry.html" class="fruits_list_tiltleLink">櫻桃禮盒</a><br>1250元
+                        <p class="fruits_list_intro"> 寶石色澤鮮紅晶亮,飽滿多汁的果肉,...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_cherry">
+                        <p><a href="cherry.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_cherry"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="grape.html"><img src="./hf2s_img/fruits_list/grape.jpg"></a>
+                    <div class="fruits_list_content"><a href="grape.html" class="fruits_list_tiltleLink">麝香葡萄禮盒</a><br>1650元
+                        <p class="fruits_list_intro">日本進口之麝香葡萄果實的香氣與亞洲麝香鹿的氣味相似，...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_grape">
+                        <p><a href="grape.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_grape"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="comprehensive_3.html"><img src="./hf2s_img/fruits_list/comprehensive_3.jpg"></a>
+                    <div class="fruits_list_content"><a href="comprehensive_3.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1100元
+                        <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：蘋果、葡萄等， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_3">
+                        <p><a href="comprehensive_3.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_3"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="comprehensive_4.html"><img src="./hf2s_img/fruits_list/comprehensive_4.jpg"></a>
+                    <div class="fruits_list_content"><a href="comprehensive_4.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1300元
+                        <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：梨子、葡萄等， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_4">
+                        <p><a href="comprehensive_4.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_4"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="comprehensive_2.html"><img src="./hf2s_img/fruits_list/comprehensive_2.jpg"></a>
+                    <div class="fruits_list_content"><a href="comprehensive_2.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1550元
+                        <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：蘋果、櫻桃等， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_2">
+                        <p><a href="comprehensive_2.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_2"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="comprehensive_1.html"><img src="./hf2s_img/fruits_list/comprehensive.jpg"></a>
+                    <div class="fruits_list_content"><a href="comprehensive_1.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1700元
+                        <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：哈密瓜、葡萄等， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive">
+                        <p><a href="comprehensive_1.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="peach.html"><img src="./hf2s_img/fruits_list/peach.jpg"></a>
+                    <div class="fruits_list_content"><a href="peach.html" class="fruits_list_tiltleLink">水蜜桃禮盒</a><br>1650元
+                        <p class="fruits_list_intro">日本進口水蜜桃口感入口即化， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_peach">
+                        <p><a href="peach.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_peach"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="avocado.html"><img src="./hf2s_img/fruits_list/avocado.jpg"></a>
+                    <div class="fruits_list_content"><a href="avocado.html" class="fruits_list_tiltleLink">酪梨禮盒</a><br>1300元
+                        <p class="fruits_list_intro">被喻為世界上最營養的水果，富含植物性油質， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_avocado">
+                        <p><a href="avocado.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_avocado"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="apple.html"><img src="./hf2s_img/fruits_list/apple.jpg"></a>
+                    <div class="fruits_list_content"><a href="apple.html" class="fruits_list_tiltleLink">日本富士蘋果禮盒</a><br>1500元
+                        <p class="fruits_list_intro">日本進口蜜富士蘋果禮盒口感甜且多汁， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_apple">
+                        <p><a href="apple.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_apple"></p>
+                    </div>
+                </div>
+                <div class="fruits_list_font">
+                    <a href="pear.html"><img src="./hf2s_img/fruits_list/pear.jpg"></a>
+                    <div class="fruits_list_content"><a href="pear.html" class="fruits_list_tiltleLink">水梨禮盒</a><br>1000元
+                        <p class="fruits_list_intro">果型圓潤飽滿，果肉細緻，質地清脆，入口汁多味甜， ...</p>
+                        <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_pear">
+                        <p><a href="pear.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_pear"></p>
+                    </div>
+                </div>
+            </ul>
+        </form>   
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style=vertical-align:middle> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>  
+    </footer>   
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        let index = 1;
+        window.autoChangeImg = function(){
+            if(index > 3){
+                index = 1;
+            }
+            document.getElementById('title_img').src = `./hf2s_img/title${index}.jpg`;
+            index++;
+        };
+        setInterval(autoChangeImg,3000);   //每兩秒自動切換調用函數
+    });
+</script>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 會員中心</title>
+        <link rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+    </head>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart_empty.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <p ><a href="#"><img id="back_to_top" src="./hf2s_img/back_to_top.png"></Back></a></p> <!--設定返回到最上端的icon按鈕-->
+        </nav>
+    </header>
+    <main>
+        <div id="user_title">
+            <img id="user-icon" src="hf2s_img/user-icon.png" style="vertical-align: middle;">
+            <p class="user_name" id="user_name"></p>
+        </div>
+        <div id="user_btn_div">
+            <button id="set_btn" class="user_btn"><img class="user_btn_icon" src="hf2s_img/setting_icon.png" style="vertical-align: middle; cursor: pointer;"></button>
+            <button id="cart_btn" class="user_btn"><img src="hf2s_img/cart_icon.png" style="vertical-align: middle; height: 50px; cursor: pointer;"></button>
+            <button id="sign_out" class="user_btn"><img src="hf2s_img/sign_out_icon.png" style="vertical-align: middle; height: 50px; cursor: pointer;"></button>
+        </div>
+        <div class="order_select">
+            <a style="cursor: pointer;" class="a3" onclick="check_pay();">待付款</a>
+            <a style="cursor: pointer;" class="a3" onclick="check_ship();">待出貨</a>
+            <a style="cursor: pointer;" class="a3" onclick="check_receipt();">待收貨</a>
+            <a style="cursor: pointer;" class="a3" onclick="finish();">已完成</a>
+            <a style="cursor: pointer;" class="a3" onclick="cancel();">取 消</a>
+            <a style="cursor: pointer;" class="a3" onclick="refund();">退貨/款</a>
+        </div>
+        <div id="待付款table">
+            <table class="orderCondition_table">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">付款狀態</td>
+                        <td class="color_td" id="取消訂單title">取消訂單</td>
+                    </tr>
+                </thead>
+                <tbody id="payTableBody">
+                    <td id="待付款_無訂單" colspan="4" class="orderCondition_table td">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+        <div id="待出貨table" style="display: none;">
+            <table class="orderCondition_table">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">付款狀態</td>
+                        <td class="color_td">物流狀態</td>
+                        <td class="color_td" id="取消訂單title">取消訂單</td>
+                    </tr>
+                </thead>
+                <tbody id="shipTableBody">
+                    <td id="待出貨_無訂單" colspan="5" class="orderCondition_table td">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+        <div id="待收貨table" style="display: none;">
+            <table class="orderCondition_table" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">物流狀態</td>
+                        <td class="color_td">取貨狀態</td>
+                        <td class="color_td" id="取消訂單title">取消訂單</td>
+                    </tr>
+                </thead>
+                <tbody id="orderTableBody">
+                    <td id="待收貨_無訂單" colspan="5" class="orderCondition_table td">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+        <div id="已完成table" style="display: none;">
+            <table class="orderCondition_table">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">取貨狀態</td>
+                    </tr>
+                </thead>
+                <tbody id="finishTableBody">
+                    <td id="已完成_無訂單" colspan="3" class="orderCondition_table td_none">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+        <div id="取消table" style="display: none;">
+            <table class="orderCondition_table">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">取消狀態</td>
+                    </tr>
+                </thead>
+                <tbody id="cancelTableBody">
+                    <td id="取消_無訂單" colspan="3" class="orderCondition_table td">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+        <div id="退貨table" style="display: none;">
+            <table class="orderCondition_table">
+                <thead>
+                    <tr>
+                        <td class="color_td">商    品</td>
+                        <td class="color_td">總 金 額</td>
+                        <td class="color_td">退貨/款狀態</td>
+                    </tr>
+                </thead>
+                <tbody id="refundTableBody">
+                    <td id="退貨_無訂單" colspan="3" class="orderCondition_table td">目前無訂單</td>
+                    <!-- 資料會根據後端回傳填充 -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style="vertical-align:middle;"> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>  
+    </footer> 
+    <style>
+        .cancel_btn{
+            margin: 35px 20px 20px 20px; /* 上右下左 */
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            background-color: #3A8524;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cancel_btn:hover{
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+            transform: translateY(-2px); /* 懸浮時上移一點以增強效果 */
+        }
+        /* RWD響應式設置 */
+        @media (max-width:1100px) { /*寬1100px以下套用*/ 
+            .cancel_btn{
+                display: none;
+                margin: 10px 12px 10px 10px; /* 上右下左 */
+                width: 45px;
+                height: 30px;
+                font-size: 15px;
+                white-space: nowrap; /* 文字不換行 */
+            }
+            /*會員中心 貨物追蹤狀態table*/
+            .orderCondition_table {
+                width:70%; 
+                margin-left:15%; 
+                margin-top: 5%; 
+                margin-bottom: 5%;
+                text-align: center;
+                white-space: nowrap; /* 文字不換行 */
+
+            }
+            .orderCondition_table td {
+                width: 20%;
+                font-size: 15px;
+                white-space: nowrap; /* 文字不換行 */
+            }
+            .tips{
+                white-space: nowrap; /* 文字不換行 */
+            }
+        }
+    </style>  
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('showOrder.php')
+        .then(response => response.json())
+        .then(data => {
+            if (!Array.isArray(data) || data.length === 0) {
+                console.log('目前無訂單');
+                return;
+            }
+
+            const payTableBody = document.getElementById('payTableBody');
+            const shipTableBody = document.getElementById('shipTableBody');
+            const orderTableBody = document.getElementById('orderTableBody');
+            const finishTableBody = document.getElementById('finishTableBody');
+            const cancelTableBody = document.getElementById('cancelTableBody');
+            const refundTableBody = document.getElementById('refundTableBody');
+
+            data.forEach(order => {
+                if (!order.products || !Array.isArray(order.products) || order.products.length === 0) {
+                    console.error('訂單無商品資料:', order);
+                    return;
+                }
+
+                let row = document.createElement('tr');
+                let productsHtml = order.products.map(product =>
+                    `<p>${product.product_name} NT$${product.amount} * ${product.quantity}盒</p>`
+                ).join('');
+
+                row.innerHTML = `
+                    <td class="orderCondition_table td">${productsHtml}</td>
+                    <td class="orderCondition_table td">${order.total}</td>
+                    <td class="orderCondition_table td">${order.pay}</td>
+                `;
+
+                row.setAttribute('data-order-id', order.order_id);
+
+                // 根據訂單狀態插入對應表格
+                if (order.pay === '待付款' || order.pay === '未付款') {
+                    appendActionCell(row, order, payTableBody, '待付款_無訂單');
+                } else if (order.pay === '已付款' && (order.status === '未出貨' || order.status === '待出貨')) {
+                    row.innerHTML += `<td class="orderCondition_table td">${order.status}</td>`;
+                    appendActionCell(row, order, shipTableBody, '待出貨_無訂單');
+                } else if (order.status === '已出貨' || order.status === '已到貨') {
+                    row.innerHTML += `<td class="orderCondition_table td">${order.status}</td>`;
+                    appendActionCell(row, order, orderTableBody, '待收貨_無訂單');
+                } else if (order.status === '已取貨') {
+                    row.innerHTML += `<td class="orderCondition_table td">${order.status}</td>`;
+                    finishTableBody.appendChild(row);
+                    document.getElementById('已完成_無訂單').style.display = "none";
+                } else if (order.cancel === '已取消' || order.cancel === '已取消(審核中)') {
+                    row.innerHTML += `<td class="orderCondition_table td">${order.cancel}</td>`;
+                    cancelTableBody.appendChild(row);
+                    document.getElementById('取消_無訂單').style.display = "none";
+                } else if (order.refund === '已退貨/款') {
+                    row.innerHTML += `<td class="orderCondition_table td">${order.refund}</td>`;
+                    refundTableBody.appendChild(row);
+                    document.getElementById('退貨_無訂單').style.display = "none";
+                }
+            });
+        })
+        .catch(error => console.error('API 請求錯誤:', error));
+});
+
+// 創建取消按鈕函式
+function createCancelButton(order) {
+    let cancelBtn = document.createElement('button');
+    cancelBtn.className = 'cancel_btn';
+    cancelBtn.textContent = '取消';
+    cancelBtn.addEventListener('click', () => {
+        fetch('cancelOrder.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ order_id: order.order_id, user_id: order.user_id }),
+        })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert("已提出取消訂單申請，請等待審核");
+                    document.querySelectorAll(`[data-order-id="${order.order_id}"]`).forEach(item => {
+                        item.querySelector('.cancel_btn').style.display = 'none';
+                        window.location.reload();
+                    });
+                } else {
+                    console.error("訂單取消失敗: " + data.message);
+                }
+            })
+            .catch(error => console.error('請求錯誤:', error));
+    });
+    return cancelBtn;
+}
+
+// 插入動作單元格函式
+function appendActionCell(row, order, tableBody, noOrderId) {
+    let actionCell = document.createElement('td');
+    actionCell.className = 'orderCondition_table td';
+
+    if (order.cancel === '已取消(審核中)' || order.cancel === '已取消') {
+        let tips = document.createElement('p');
+        tips.className = 'tips';
+        tips.textContent = order.cancel;
+        actionCell.appendChild(tips);
+    } else {
+        let cancelBtn = createCancelButton(order);
+        actionCell.appendChild(cancelBtn);
+    }
+    
+    row.appendChild(actionCell);
+    tableBody.appendChild(row);
+    document.getElementById(noOrderId).style.display = "none";
+}
+
+function check_pay() {
+    const show1 = document.getElementById("待付款table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待出貨table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待收貨table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("已完成table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("取消table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("退貨table");
+    show6.style.display = "none"; // 隱藏
+}
+
+function check_ship() {
+    const show1 = document.getElementById("待出貨table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待付款table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待收貨table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("已完成table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("取消table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("退貨table");
+    show6.style.display = "none"; // 隱藏
+}
+
+function check_receipt() {
+    const show1 = document.getElementById("待收貨table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待出貨table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待付款table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("已完成table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("取消table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("退貨table");
+    show6.style.display = "none"; // 隱藏
+}
+
+function finish() {
+    const show1 = document.getElementById("已完成table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待出貨table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待收貨table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("待付款table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("取消table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("退貨table");
+    show6.style.display = "none"; // 隱藏
+}
+
+function cancel() {
+    const show1 = document.getElementById("取消table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待出貨table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待收貨table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("已完成table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("待付款table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("退貨table");
+    show6.style.display = "none"; // 隱藏
+}
+
+function refund() {
+    const show1 = document.getElementById("退貨table");
+    show1.style.display = "block"; // 出現
+    const show2 = document.getElementById("待出貨table");
+    show2.style.display = "none"; // 隱藏
+    const show3 = document.getElementById("待收貨table");
+    show3.style.display = "none"; // 隱藏
+    const show4 = document.getElementById("已完成table");
+    show4.style.display = "none"; // 隱藏
+    const show5 = document.getElementById("取消table");
+    show5.style.display = "none"; // 隱藏
+    const show6 = document.getElementById("待付款table");
+    show6.style.display = "none"; // 隱藏
+}
+
+// 登入邏輯
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('authToken');
+    const user_id = localStorage.getItem('user_id'); 
+    if (!token || !user_id) {
+        alert('未找到登入者資料');
+    } else {
+        // 若需要，可透過 API 驗證 Token 是否有效
+        console.log('使用者已登入，Token:', token);
+        console.log('使用者已登入，UserId:', user_id);
+    }
+});
+
+// 登出邏輯
+document.addEventListener('DOMContentLoaded', function() {
+    const signOutButton = document.getElementById('sign_out');
+    signOutButton.addEventListener('click', function() {
+        // 確認是否登出
+        if (confirm('確定要登出嗎？')) {
+            // 清除本地存儲中的 authToken 和 user_id
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user_id');
+            localStorage.removeItem('cart'); // 清除購物車資料
+            
+            // 清除伺服器端 session 中的 user_id 和 guest_id
+            fetch('logout.php', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => {
+                    // 更新購物車連結為 cart_empty.html
+                    const cartLink = document.querySelector('.cart');
+                    if (cartLink) {
+                        cartLink.href = 'cart_empty.html'; // 更新為空購物車頁面
+                    }
+                    // 重定向到登入頁面
+                    window.location.href = 'user_login.html';
+                })
+                .catch(error => console.error('登出失敗:', error));
+        }
+        // 生成無重複的亂碼
+        function generateUniqueRandomNumbers() {
+            const digits = Array.from({ length: 10 }, (_, i) => i); // [0, 1, 2, ..., 9]
+            for (let i = digits.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1)); // 隨機索引
+                [digits[i], digits[j]] = [digits[j], digits[i]]; // 交換位置
+            }
+            return digits.join('');
+        }
+        let user_id = localStorage.getItem('user_id');
+        if (!user_id) {
+            user_id = generateUniqueRandomNumbers();
+            localStorage.setItem('user_id', user_id);
+            console.log('使用者UserId:', user_id);
+        }else{console.log('使用者已登入，UserId:', user_id);}
+    });
+});
+</script>
+</html>

@@ -1,0 +1,301 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: beige;
+    margin: 0;  /*默認的白色外邊界設定為0(去除白邊)*/
+    /* padding-top: 540px;   確保內容不被 header 遮擋，設定與 header 高度相同的內邊距 */
+}
+header {
+    display: flex;
+    position: fixed; /* 使 header 固定在視窗 */
+    top: 0;          /* 將 header 放置在視窗頂部 */
+    width: 100%;    /*單位 % j或 vw = 讓 header 佔滿整個視窗寬度 */
+    height: 105px;
+    display: flex;
+    justify-content: center;  
+    /* 水平置中 */
+    align-items: self-start;  
+    /*確保子元素在垂直置中*/
+    z-index: 5;  /* 確保header在其他內容之上;設置元素的堆疊順序，高z-index值的元素顯示在低z-index 值的元素上*/
+    /*background-image: url('./hf2s_img/title.jpg');   替換背景圖片URL*/
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s, height 0.3s; /* 過渡效果 */
+}
+header.scrolled {
+    display: flex;
+    /*background-image: none;  移除背景圖片 */
+    background-color: #2E2E2E; /* 背景色變為黑色 */
+    /* height: 105px;  縮小 header 高度 */
+    align-items: center;
+}
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*space-between:水平抵住兩端分散排列*/
+    font-size: 22px;
+    width: 100%;    
+    word-spacing: 0.3cm;
+    /* 字之間的間距 */
+    color: white;
+    gap: 20px; 
+    /* 調整各元素之間的間距 */
+}
+#title a {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 10px 10px;   /* 調整上下邊距 */
+    text-decoration: none; /* 取消連結底線 */
+    color: inherit; /* 顏色繼承title的color */
+    font-family: 標楷體;
+    border-radius: 5px; /* 調整邊框圓角 */
+    transition: background-color 0.3s; 
+    /* transition增加過渡效果，控制鼠標放上去後多久出現底色，用來設定基礎的動畫效果 */
+}
+#title a:hover {  /* hover設定鼠標停留在按鈕上所出現的懸浮框 */
+    background-color: #3A8524; /* 調整懸停背景顏色 */
+    color: white; /* 調整懸停文字顏色 */
+}
+.navigation{
+    display: flex;
+    align-items: center;
+}
+.navigation a {
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.navigation a:hover {
+    background-color: #3A8524;
+    color: white;
+}
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.menu-toggle .bar {
+    width: 30px;
+    height: 2.5px;
+    background-color: white;
+    margin: 3.5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transition: 0.3s;
+    transition: background-color 0.3s;
+}
+.menu-toggle:hover {
+    background-color: #3A8524;
+    color: white;
+}
+
+/* RWD響應式設置 */
+@media (max-width:1100px) {    
+    header{
+        width: 100%; height: 105px;
+        background-image: none;
+        background-color: #2E2E2E; /* 背景色變為黑色 */
+    }
+    header.scrolled {
+        background-color: #2E2E2E; /* 背景色變為黑色 */
+        height: 105px; /* 縮小 header 高度 */
+    }
+    body{
+        padding-top: 120px;
+    }
+    #back_to_top{
+        width: 50px;
+        height: 50px;
+        bottom: 50px;
+        right: 50px;
+    }
+    .navigation {
+        display: none; /* 默認隱藏 */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 105px;
+        left: 0;
+        background-color: rgba(5, 5, 5, 0.808);
+        text-align: center;
+        padding: 10px 0;
+    }
+    .navigation a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0; /* 底部边框 */
+    }
+    .menu-toggle {
+        display: flex; /* 顯示三横線圖標 */
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {  /*:nth-child(2)指選擇 .bar 元素中的第2個子元素*/
+        opacity: 0;    /* 隱藏第二條橫線 */  
+    }
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg); 
+        /* translateY(7px)：沿 Y 軸移動 +11 像素。
+           rotate(45deg)：順時針方向旋轉 45 度。 */
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .navigation.active {
+        display: flex;   /* 顯示導覽菜單 */
+    }
+}
+
+#text p{ 
+    margin:30px;padding: 10px;
+}
+#text1{ 
+    font-size: 35px; font-family: 新細明體; 
+    color: #292929; text-align: center;
+}
+#text_non{
+    display: none;
+}
+#text2{ 
+    font-size: 20px; font-family: 新細明體; 
+    color: #7DC483; text-align: center;
+}
+#back_to_top{
+    position: fixed; /* 固定在頁面左下角 */
+    width: 105px;
+    height: 105px;
+    bottom: 10px;    
+    right: 10px;      
+    z-index: 10;   
+}
+#fruits_list a{
+    color: #292929;  /* 將所有超連結顏色改成黑色 */
+    text-align: center;
+    font-family: 標楷體;
+    text-decoration:none; /* 隱藏所有超連結底線 */
+}
+#fruits_list a:hover {
+    color: #3A8524; /* 懸浮時的顏色 */
+}
+.fruits_list_font{
+    width: 300px;
+    text-align: center;
+    font-family: 標楷體;
+    font-size: 25px;
+    margin: 10px; padding: 5px;
+    border-radius: 5px; /* 調整邊框圓角 */
+    border:gray 0.5px dashed;
+    transition: all 0.3s ease-in-out; /* 添加過渡效果 */
+    box-shadow: none; /* 初始不顯示陰影 */ 
+}
+.fruits_list_font:hover {  /* 設定鼠標停留在div上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+.fruits_list_titleLink{font-size: 25px;}
+.fruits_list_contentLink{
+    padding: 5px;
+    font-size: 20px;
+    background-image: linear-gradient(to top,#fbe6bc ,white );
+    border: #D6BB87 2px;
+    border-style: none none groove none ; /* 改邊框樣式(上 右 下 左) */
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: none;
+}
+.fruits_list_contentLink:hover {  /* 設定鼠標停留在"查看內容"上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+.fruits_list_content{border:gray 0.5px dashed;}
+.fruits_list_intro{
+    text-align: center;
+    font-family: 標楷體;
+    font-size: 20px;
+    color: gray;
+}
+ul{
+    align-content: center; 
+    justify-content: center;
+    display: flex; 
+    flex-wrap: wrap;
+}
+footer {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    z-index: 1; /* 確保 footer 在其他內容之上 不會被其他元素覆蓋 */
+    background: #2E2E2E;
+    color: white;
+    width: 100vw;
+    height: 100px;    
+    font-size: 15px;
+    word-spacing: 0.4cm;
+    /* 字之間的間距 */
+}
+
+#品牌介紹1 {
+    text-align: center; 
+    font-size: 50px; 
+    font-family: 標楷體;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 可選，用於調整圖片和文字之間的距離*/
+}
+#品牌介紹2 {text-align: center; font-size: 40px; font-family: 標楷體;}
+#品牌介紹3 {text-align: center; font-size: 22.5px; font-family: 標楷體; padding-bottom: 20px;
+}
+#品牌介紹4 {text-align: center; font-size: 22.5px; font-family: 標楷體; padding-top: 30px;  padding-bottom: 20px;
+}
+#退換貨政策1 {text-align: center; font-size: 50px; font-family: 標楷體;}
+#退換貨政策2 {text-align: left; font-family: 標楷體; font-size:22.5px;
+    padding-right: 30px; padding-left: 30px; padding-bottom: 20px;
+}
+#退換貨政策3 {text-align: left; font-family: 標楷體; font-size:22.5px;
+    padding-top: 30px; padding-left: 30px; padding-bottom: 20px;
+}
+#聯繫我們 {text-align: center; font-size: 50px; font-family: 標楷體;}
+#Line_img{
+    align-items: center; text-align: center; font-size: 23px;
+}
+#Line{
+    text-align: center; color: #787878; font-size: 20px;  
+}
+#farmland_img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+#category_title{text-align: center; font-size: 50px; font-family: 標楷體;}
+#user_login_title{text-align: center; font-size: 50px; font-family: 標楷體;}
+#price_category_title{
+    text-align: center; font-family: 標楷體; font-size:35px;
+}
+#price_category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 標楷體; font-size:22px;
+}
+#click_here_icon{
+    border-radius: 5px; /* 調整邊框圓角 */
+    transition: all 0.3s ease-in-out; /* 添加過渡效果 */
+    box-shadow: none; /* 初始不顯示陰影 */ 
+}
+#click_here_icon:hover {  /* 設定鼠標停留在"點這裡"圖片上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 訂購須知</title>
+        <LINK rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+        <style>
+            h1,h3{text-align: center; margin-top: 3%;} 
+            td { text-align: center; vertical-align: top;}
+
+        </style>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart_empty.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>  
+        <div style="background-color: #121212; width: 100vw; height: 115px;"></div>
+        <h1 >訂 購 方 式</h1>
+        <h3>訂購選擇</h3>
+        <table id="table_info"> <!-- tr垂直列、td水平欄( <td> 只能作為 <tr> 的子元素) -->
+            <tr>
+                <td>
+                    <span class="circle_no">1</span><br><br>電話訂購<br><br>
+                    <img src="./hf2s_img/telephone.png" style="vertical-align: middle;"> 07-6571688
+                </td>
+                <td>
+                    <span class="circle_no">2</span><br><br>傳真訂購<br><br>
+                    <img src="./hf2s_img/fax.png" style="vertical-align: middle;"> 07-6571685<br><br>
+                    <div id="fax_data">
+                        <ul>
+                            <li>請下載 <a class="a2" href="./hf2s_img/fax.doc">傳真訂購單</a></li>
+                            <li>例假日及國定假日<b>無宅配</b></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <span class="circle_no">3</span><br><br>網路訂購<br><br>
+                    <img src="./hf2s_img/web.png" style="vertical-align: middle;"> HF2S<br><br>
+                    <a class="a2" href="all_product.html">前往訂購</a>
+                </td>
+            </tr>
+        </table>
+        <h3>優惠方案</h3>
+        <div id="special">
+            <p>訂購<b>滿5000元</b>以上，可<b>享免運費</b>優惠</p>
+            <p>( 限台灣本島、同一日期及地址，兩種商品不得混合計算 )</p>
+        </div>
+        <h3>運費計算</h3>
+        <div class="fee_select">
+            <a class="a1" onclick="check_fee();">運費查詢</a>
+            <a class="a1" onclick="take_fee();">貨到付款手續費</a>
+        </div>
+        <div id="fee_div1">
+            <table class="fee_table">
+                <tr>
+                    <td colspan="2" class="color_td">台灣本島</td>
+                    <td colspan="2" class="color_td">外  島</td>
+                </tr>
+                <tr>
+                    <td>數量</td> <td>金額</td> <td>數量</td> <td>金額</td>
+                </tr>
+                <tr>
+                    <td>1-4盒</td> <td>160元</td> <td>1-4盒</td> <td>260元</td>
+                </tr>
+            </table>
+        </div>
+        <div id="fee_div2">
+            <table class="fee_table">
+                <tr>
+                    <td class="color_td">總金額(含運費)</td>
+                    <td class="color_td">運 費</td>
+                </tr>
+                <tr>
+                    <td>3000元以下</td> <td>30元</td>
+                </tr>
+                <tr>
+                    <td>3001~4999元</td> <td>60元</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style=vertical-align:middle> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>  
+    </footer>   
+</body>
+<script>
+    function check_fee(){
+        const show_fee1 = document.getElementById("fee_div1");
+        show_fee1.style.display = "block"; //show_fee1出現
+        const show_fee2 = document.getElementById("fee_div2");
+        show_fee2.style.display = "none"   //show_fee2隱藏
+    }
+
+    function take_fee(){
+        const show_fee1 = document.getElementById("fee_div1");
+        show_fee1.style.display = "none";
+        const show_fee2 = document.getElementById("fee_div2");
+        show_fee2.style.display = "block"
+    }
+</script>
+</html>

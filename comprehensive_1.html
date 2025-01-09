@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 綜合水果禮盒</title>
+        <LINK rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+    </head>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart_empty.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <p ><a href="#"><img id="back_to_top" src="./hf2s_img/back_to_top.png"></Back></a></p> <!--設定返回到最上端的icon按鈕-->
+        </nav>
+    </header>
+    <main> 
+        <div style="background-color: #121212; width: 100vw;height: 115px;"></div>
+        <!-- 簡介完整畫面設置(圖片+簡介+按鈕等) -->
+        <form id="addCartForm" method="post" action="addCart.php">
+            <div class="fruit_intro_div">
+                <!-- 簡介圖片設置 -->
+                <div id="gallery" class="fruit_intro_ALL_img_div">
+                    <!-- 簡介大圖片設置 -->
+                    <div id="main_img" class="fruit_intro_main_img_container">
+                        <img id="fruit_intro_main_img" src="hf2s_img/fruit_intro/comprehensive1_1.jpg" width="100%">
+                        <button id="preBtn" class="nav-button prev" onclick="preImage()">&#10094;</button>
+                        <button id="nexBtn" class="nav-button next" onclick="nextImage()">&#10095;</button>
+                    </div>
+                    <!-- 簡介大圖片下面小圖片設置 -->
+                    <div class="fruit_intro_small_img_group">
+                        <div class="fruit_intro_small_img_div">
+                            <img id="img1" class="fruit_intro_small_img" src="hf2s_img/fruit_intro/comprehensive1_1.jpg" onclick="showImg(0)">
+                        </div>
+                        <div class="fruit_intro_small_img_div">
+                            <img id="img2" class="fruit_intro_small_img" src="hf2s_img/fruit_intro/comprehensive1_2.jpg" onclick="showImg(1)">
+                        </div>
+                        <div class="fruit_intro_small_img_div">
+                            <img id="img3" class="fruit_intro_small_img" src="hf2s_img/fruit_intro/comprehensive1_3.jpg" onclick="showImg(2)">
+                        </div>
+                    </div>
+                </div>
+                <!-- 簡介完整內容設置 -->
+                <div class="fruit_intro_ALL_detail_div">
+                    <div class="fruit_intro_detail_title">
+                        <b>綜合水果禮盒</b>
+                    </div>
+                    <br>
+                    <div class="fruit_intro_detail_price">$1700</div>
+                    <br>
+                    <div class="fruits_intro_detail_intro">
+                        <div class="fruit_intro_detail_text_title">描 述</div>
+                        <div class="fruit_intro_detail_text">
+                            禮盒內含麝香葡萄 1串、蘋果 1顆、<br>
+                            哈密瓜 1顆、蜜柑 5顆 ，<br>
+                            依季節內容物不定，但內容豐富，<br>
+                            絕對是送禮時的首選！<br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fruits_intro_detail_intro">
+                        <div class="fruit_intro_detail_text_title">尺 寸</div>
+                        <div class="fruit_intro_detail_text">
+                            5入/盒<br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fruits_intro_detail_intro">
+                        <div class="fruit_intro_detail_text_title">配 送</div>
+                        <div class="fruit_intro_detail_text">
+                        目前水果禮盒配送免運服務區域僅提供:<br>
+                        <b>高雄市、屏東市(縣)、台南市。</b><br>
+                        其他縣市區域運費:<b>250元(依材積收費為主)</b>。<br>
+                        有任何問題也歡迎詢問<a href="custermerService.html" style="text-decoration: none; color: #3A8524;"><b> 線上客服 (點我)</b></a>。
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fruits_intro_detail_intro">
+                        <div class="fruit_intro_detail_text_title">數 量</div>
+                        <div class="fruit_intro_detail_text">
+                            <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive">&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink add_cart" id="add_btn" type="submit" value="加購物車" name="add_comprehensive">&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink buy_now" id="add_btn" type="submit" value="直接購買" name="add_comprehensive" onclick="redirectToCart();">
+                            <div class="remain">剩餘:<span class="remain_input"></span>盒</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="相關商品">
+                <div class="相關商品_title">相 關 商 品</div>
+                <ul id="fruits_list">              
+                    <div class="fruits_list_font">
+                        <a href="comprehensive_3.html"><img src="./hf2s_img/fruits_list/comprehensive_3.jpg"></a>
+                        <div class="fruits_list_content"><a href="comprehensive_3.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1100元
+                            <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：蘋果、葡萄等， ...</p>
+                            <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_3">
+                            <p><a href="comprehensive_3.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_3"></p>
+                        </div>
+                    </div>
+                    <div class="fruits_list_font">
+                        <a href="comprehensive_4.html"><img src="./hf2s_img/fruits_list/comprehensive_4.jpg"></a>
+                        <div class="fruits_list_content"><a href="comprehensive_4.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1300元
+                            <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：梨子、葡萄等， ...</p>
+                            <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_4">
+                            <p><a href="comprehensive_4.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_4"></p>
+                        </div>
+                    </div>
+                    <div class="fruits_list_font">
+                        <a href="comprehensive_2.html"><img src="./hf2s_img/fruits_list/comprehensive_2.jpg"></a>
+                        <div class="fruits_list_content"><a href="comprehensive_2.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1550元
+                            <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：蘋果、櫻桃等， ...</p>
+                            <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive_2">
+                            <p><a href="comprehensive_2.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive_2"></p>
+                        </div>
+                    </div>
+                    <div class="fruits_list_font">
+                        <a href="comprehensive_1.html"><img src="./hf2s_img/fruits_list/comprehensive.jpg"></a>
+                        <div class="fruits_list_content"><a href="comprehensive_1.html" class="fruits_list_tiltleLink">綜合水果禮盒</a><br>1700元
+                            <p class="fruits_list_intro">內含多種當季新鮮水果，包括但不限於：哈密瓜、葡萄等， ...</p>
+                            <input class="p_no_1" type="number" min=0 max="10" step="1" value="1" name="p_no_comprehensive">
+                            <p><a href="comprehensive_1.html" class="fruits_list_contentLink">查看內容</a>&ensp;<input style="font-family: 標楷體;" class="fruits_list_contentLink" id="add_btn" type="submit" value="加購物車" name="add_comprehensive"></p>
+                        </div>
+                    </div>
+                </ul>  
+            </div>  
+        </form> 
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style=vertical-align:middle> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>  
+    </footer>   
+</body>
+
+<script>
+    //商品簡介-照片牆切換功能
+    document.addEventListener('DOMContentLoaded', function() {
+        const fruit_intro_main_img = document.getElementById('fruit_intro_main_img');
+        const imgs = [
+            "hf2s_img/fruit_intro/comprehensive1_1.jpg",  //imgs[0]
+            "hf2s_img/fruit_intro/comprehensive1_2.jpg",  //imgs[1]
+            "hf2s_img/fruit_intro/comprehensive1_3.jpg"   //imgs[2]
+        ];
+        let index = 0 ;
+        //按照片切換
+        window.showImg = function(currentIndex){      // = function showImg(currentIndex){.......};
+            index = currentIndex;                     // 前面加上window是因為要在HTML中調用 onclick 屬性，
+            fruit_intro_main_img.src = imgs[index];   // 加上前面用了 DOMContentLoad 事件包起來，屬於封閉範圍，需要確保這個函數在全局範圍內可用
+        };
+        //左右按鈕切換
+        window.preImage = function(){                 // = function preImg(){......};
+            index = index - 1;                       
+            if (index < 0) {                          // 若index減到 < 0; 設置為最後一張圖片的索引(imgs.length - 1)
+                index = imgs.length - 1;              // imgs.length = imgs 陣列的長度，有 3 張圖片，那麼 imgs.length 就是= 3，
+            }                                         // 故index = 'imgs.length - 1' =  '3 - 1'  = 2，而index = 2就等於imgs[2]是最後一張照片
+            fruit_intro_main_img.src = imgs[index];
+        };
+        window.nextImage = function(){                // = function nextImg(){......};
+            index = index + 1;
+            if (index > 2) {
+                index = 0;
+            }
+            fruit_intro_main_img.src = imgs[index];
+        };
+    });
+</script>
+
+</html>

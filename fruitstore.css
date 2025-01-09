@@ -1,0 +1,1519 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* 禁止水平滾動 */
+    background-color: rgb(241, 241, 217);
+    min-height: 100vh; /* 保證 body 高度至少等於視窗高度 */ 
+    width: 100%;
+    margin: 0;   /* 默認的白色外邊界設定為0(去除白邊) */
+    /* padding-top: 540px;   確保內容不被 header 遮擋，設定與 header 高度相同的內邊距 */
+}
+header {
+    display: flex;
+    position: fixed; /* 使 header 固定在視窗 */
+    top: 0;          /* 將 header 放置在視窗頂部 */
+    width: 100vw;     /*單位 % 或 vw = 讓 header 佔滿整個視窗寬度 */
+    height: 115px;
+    display: flex;
+    justify-content: center;  
+    /* 水平置中 */
+    align-items: self-start;  
+    /*確保子元素在垂直置中*/
+    z-index: 5;  /* 確保header在其他內容之上;設置元素的堆疊順序，高z-index值的元素顯示在低z-index 值的元素上*/
+    /*background-image: url('./hf2s_img/title.jpg');   替換背景圖片URL*/
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s, height 0.3s; /* 過渡效果 */
+}
+header.scrolled {
+    /*background-image: none;  移除背景圖片 */
+    background-color: #121212; /* 背景色變為黑色 */
+    height: 115px;  /* 縮小 header 高度 */
+}
+/* 右側選單 */
+.side-nav{
+    position: fixed; /* 固定在頁面左下角 */
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    background-color: rgba(241, 241, 217, 0.200);;
+    height: auto;
+    bottom: 200px;    
+    right: 20px;
+    border-radius: 20px;      
+    z-index: 3;  
+}
+.right_nav_item {
+    list-style: none; /* 去除列表項目符號 */
+    padding: 0; /* 去除內邊距 */
+    margin: 0; /* 去除外邊距 */
+}
+.nav-item{
+    margin: 5px;
+    position: relative; /* 使 hover 元素相對定位 */
+}
+.nav-link{
+    color: #121212;
+    text-decoration: none;
+}
+.scaling-svg-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.nav-item_img{
+    width: 35px;
+    padding: 3px;
+}
+.nav-item_text {
+    width: 80px;
+    display: none;         /* 初始隱藏 */
+    position: absolute;    /* 絕對定位 */
+    right: 45px;           /* 鼠標放上去內文顯示在右邊 */
+    background-color:#1212129e; 
+    color: rgb(241, 241, 217);
+    text-align: center; 
+    padding: 8px; 
+    border-radius: 20px; 
+    letter-spacing: 1px;  /* 字母間的間距 */
+    white-space: nowrap;   /* 防止文字换行 */
+}
+.nav-item:hover .nav-item_text {
+    display: block; /* 懸停時出現 */
+}
+#back_to_top{
+    position: fixed; /* 固定在頁面左下角 */
+    width: 60px;
+    height: 70px;
+    bottom: 12px;
+    right: 10px;   
+    z-index: 3;
+    display: none;   
+}
+#back_to_top.scroll{
+    display: block;
+}
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*space-between:水平抵住兩端分散排列*/
+    font-size: 22px;
+    width: 100vw;    
+    word-spacing: 0.3cm;
+    /* 字之間的間距 */
+    color: white;
+    gap: 20px; 
+    /* 調整各元素之間的間距 */
+}
+.title a {
+    padding: 5px;
+    margin: 10px 10px;   /* 調整上下邊距 */
+    text-decoration: none; /* 取消連結底線 */
+    color: inherit; /* 顏色繼承title的color */
+    font-family: 標楷體;
+    border-radius: 5px; /* 調整邊框圓角 */
+    transition: background-color 0.3s; 
+    /* transition增加過渡效果，控制鼠標放上去後多久出現底色，用來設定基礎的動畫效果 */
+}
+.title a:hover {  /* hover設定鼠標停留在按鈕上所出現的懸浮框 */
+    background-color: #3b852493; /* 調整懸停背景顏色 */
+    color: white; /* 調整懸停文字顏色 */
+}
+.navigation{
+    display: flex;
+    align-items: center;
+}
+.navigation a {
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.navigation a:hover {
+    background-color: #3b852493;
+    color: white;
+}
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+.menu-toggle .bar {
+    width: 30px;
+    height: 2.5px;
+    background-color: white;
+    margin: 3.5px;
+    transition: 0.3s;
+    transition: background-color 0.3s;
+}
+.menu-toggle:hover {
+    background-color: #3b852493;
+    color: white;
+}
+#title_img_div{
+    position: relative;
+    display: flex;
+    margin-top: 0px;
+    width: 100%; 
+    height: 540px; 
+}
+#title_img{
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+}
+#text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 垂直居中 */
+    justify-content: center;  /* 水平居中 */
+    text-align: center;  /* 確保文字在父元素中水平居中 */
+}
+#text p{ 
+    /* line-height: 0;  調整行高以縮小文本行之間的間距 */
+    margin-bottom:10px; 
+    margin-right:30px;
+    margin-left:30px;
+}
+#text1{ 
+    font-size: 35px; 
+    font-family: 新細明體; 
+    color: #121212; 
+}
+#text2{ 
+    font-size: 20px; 
+    font-family: 新細明體; 
+    color: #7DC483; 
+}
+#fruits_list{
+    display: flex; 
+    width: auto;
+    height: auto;
+    align-content: center; 
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+#fruits_list a{
+    color: #121212;  /* 將所有超連結顏色改成黑色 */
+    text-align: center;
+    font-family: 標楷體;
+    text-decoration:none; /* 隱藏所有超連結底線 */
+}
+#fruits_list a:hover {
+    color: #3A8524; /* 懸浮時的顏色 */
+}
+.fruits_list_font{
+    width: 300px;
+    text-align: center;
+    font-family: 標楷體;
+    font-size: 25px;
+    margin: 10px; padding: 5px;
+    border-radius: 5px; /* 調整邊框圓角 */
+    border:gray 0.5px dashed;
+    transition: all 0.3s ease-in-out; /* 添加過渡效果 */
+    box-shadow: none; /* 初始不顯示陰影 */ 
+}
+.fruits_list_font:hover {  /* 設定鼠標停留在div上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+.fruits_list_titleLink{font-size: 25px;}
+.fruits_list_contentLink{
+    padding: 10px;
+    font-size: 18px;
+    background-image: linear-gradient(to top,#fbe6bc ,white );
+    border: #D6BB87 2px;
+    border-style: none none groove none ; /* 改邊框樣式(上 右 下 左) */
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    
+}
+.fruits_list_contentLink:hover {  /* 設定鼠標停留在"查看內容"上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+.fruits_list_content{border:gray 0.5px dashed;}
+.fruits_list_intro{
+    text-align: center;
+    font-family: 標楷體;
+    font-size: 20px;
+    color: gray;
+}
+.p_no_1{
+    width: 100px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-radius: 10px;
+    border: 0.5px rgb(225, 220, 220) solid;
+}
+footer {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100px;
+    background: #121212;
+    color: white;
+    font-size: 15px;
+    word-spacing: 0.4cm; /* 字之間的間距 */
+    margin-top: auto; /* 確保 footer 在最底部 */
+}
+.a1 {
+    border: solid #3A8524 2px; 
+    border-radius:10px; 
+    padding:5px; 
+    margin:10px;
+    color: #121212;
+    text-decoration: none;
+}
+.a1:hover{
+    color: #3A8524;
+}
+.a2 { 
+    margin:1px;
+    color: #3A8524;
+    text-decoration: none;
+}
+.a2:hover{
+    color: #4bef18;
+}
+.a3 {
+    border-style: none none groove none; 
+    padding:5px; 
+    margin:0 30px 0 30px;
+    color: #121212;
+    font-size: 20px;
+    font-family: 標楷體;
+    text-decoration: none;
+    text-align: center;   
+}
+.a3:hover{
+    color: #3A8524;
+}
+#page_title{
+    display: flex;
+    background-color: #121212;
+    border-bottom: 10px white double;
+    height: 540px;
+    width: 100%;
+    margin-top: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    font-size: 50px;
+    font-family: 標楷體;
+}
+
+/* 品牌介紹頁面 */
+#品牌介紹2 {text-align: center; font-size: 40px; font-family: 標楷體;}
+#品牌介紹3 {text-align: center; font-size: 22.5px; font-family: 標楷體; padding-bottom: 20px;
+}
+#品牌介紹4 {text-align: center; font-size: 22.5px; font-family: 標楷體; padding-top: 30px;  padding-bottom: 20px;
+}
+#farmland_img_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    margin: 20px;
+}
+#farmland_img{
+    border:10px double #292929; 
+    border-radius: 30px; 
+    margin: 20px;
+}
+
+/* 線上客服頁面 */
+#Line_img{
+    align-items: center; text-align: center; font-size: 23px;
+}
+#Line{
+    text-align: center; color: #787878; font-size: 20px;  
+}
+
+/* 商品分類頁面 */
+#price_category_title{
+    text-align: center; font-family: 標楷體; font-size:35px;
+}
+#price_category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 標楷體; font-size:22px;
+}
+
+/* 退換貨頁面 */
+#return_title{
+    text-align: center; font-family: 標楷體; font-size:35px;
+}
+#退換貨政策2 {text-align: left; font-family: 標楷體; font-size:22.5px;
+    padding-right: 30px; padding-left: 30px; padding-bottom: 20px;
+}
+#退換貨政策3 {text-align: left; font-family: 標楷體; font-size:22.5px;
+    padding-top: 30px; padding-left: 30px; padding-bottom: 20px;
+}
+#click_here_icon{
+    border-radius: 5px; /* 調整邊框圓角 */
+    transition: all 0.3s ease-in-out; /* 添加過渡效果 */
+    box-shadow: none; /* 初始不顯示陰影 */ 
+}
+#click_here_icon:hover {  /* 設定鼠標停留在"點這裡"圖片上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+
+/* 會員登入頁面 */
+.login_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 215px); /* 減去 header 115px + footer 100px 高度 */
+}
+.login_title {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 100%;
+    margin-right: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    background-color: #76bd60;
+}
+.login_title1 {
+    color: rgb(241, 241, 217);
+    font-size: 50px;
+    font-family: 標楷體;
+}
+.login_title2 {
+    color: rgb(240, 240, 174);
+    font-size: 22px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.hr{
+    height: 100%;
+    width:0.5vw;
+    border:2px dashed #292929;
+}
+.login_content{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+.login_div input {
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    /* 優先使用'Times New Roman'，如果不可用則使用'Times'，如果仍不可用則使用系統預設的無襯線字體（serif） */
+    margin: 12px auto;
+    text-indent: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(241, 241, 217);
+    border-bottom: 2px solid #3A8524;
+    outline: none;
+}
+.password_wrapper {
+    position: relative; /* 為了讓眼睛icon放進input框中 */
+}
+/* 確保 .eye_button 可以相對於 .password_wrapper 進行定位。 */
+.eye_btn {
+    position: absolute;
+    right: 10px; /* right是一個定位屬性，用於position是absolute時，把 .eye_button 從 .password_wrapper 右邊界向內偏移 10 */
+    top: 32%;
+    width: 25px;
+    height: 20px;
+    border: none; 
+    background: none;
+    background-image: url("./hf2s_img/eye.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.login_tip{
+    font-size: 15px;
+    text-align: start;
+    margin: 0;
+    color: red;
+}
+.login_btn {
+    width: 300px;
+    height: 50px;
+    margin: 35px auto 40px auto;
+    border: none;
+    background: linear-gradient(-200deg, #3A8524, #a8e9ae); 
+    /*linear-gradient = 由兩種或多種顏色沿一條直線進行線性過渡*/
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 8px; /* 字母之間的間距為8px */
+    border-radius: 10px;
+    cursor: pointer; /* 當滑鼠懸停在元素上時，指標變成手指形狀 */
+    transition: 0.5s;
+}
+.login_btn:hover {
+    background: linear-gradient(-200deg, #a8e9ae, #3A8524);
+    background-position-x: -300px; 
+    /* X與button寬一樣大小 取決於動畫換顏色的寬度 */
+}
+.login_div span {
+    font-size: 20px;
+}
+.login_div a {
+    color: #3A8524;
+    text-decoration: none;
+}
+.login_div a:hover {
+    color: #7DC483;
+    text-decoration: none;
+}
+
+/* 會員註冊頁面 */
+.register_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 215px); /* 減去 header 115px + footer 100px 高度 */
+}
+.register_title {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    background-color: #76bd60;
+}
+.register_title1 {
+    color: rgb(241, 241, 217);
+    font-size: 50px;
+    font-family: 標楷體;
+}
+.register_title2 {
+    color: rgb(240, 240, 174);
+    font-size: 22px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.register_content{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.register_div input {
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    /* 優先使用'Times New Roman'，如果不可用則使用'Times'，如果仍不可用則使用系統預設的無襯線字體（serif） */
+    margin: 6px auto;
+    text-indent: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(241, 241, 217);
+    border-bottom: 2px solid #3A8524;
+    outline: none;
+}
+.register_tip{
+    font-size: 13px;
+    text-align: start;
+    margin: 0;
+    color: red;
+}
+.register_btn {
+    width: 300px;
+    height: 50px;
+    margin: 40px auto 5px auto;
+    border: none;
+    background: linear-gradient(-200deg, #3A8524, #a8e9ae); 
+    /*linear-gradient = 由兩種或多種顏色沿一條直線進行線性過渡*/
+    color: white;
+    font-size: 20px;
+    font-weight: bold; /* 字體粗體 */
+    letter-spacing: 8px; /* 字母之間的間距為8px */
+    border-radius: 10px;
+    cursor: pointer; /* 當滑鼠懸停在元素上時，指標變成手指形狀 */
+    transition: 0.5s;
+}
+.register_btn:hover {
+    background: linear-gradient(-200deg, #a8e9ae, #3A8524);
+    background-position-x: -300px; 
+    /* X與button寬一樣大小 取決於動畫換顏色的寬度 */
+}
+.register_div span {
+    font-size: 20px;
+}
+.register_div a {
+    color: #3A8524;
+    text-decoration: none;
+}
+.register_div a:hover {
+    color: #7DC483;
+    text-decoration: none;
+}
+
+/*會員中心畫面*/
+#user_title{
+    display: flex;
+    flex-direction: column;
+    background-color: #121212;
+    border-bottom: 10px white double;
+    border-radius:0 0 50% 50%;
+    height: 480px;
+    width: 100%;
+    margin-top: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    font-family: 標楷體;
+}
+#user-icon{
+    margin-top: 100px;
+    height: 180px;
+}
+.user_name{
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+#user_btn_div{
+    display: flex;
+    justify-content: center;
+}
+.user_btn{
+    width: 200px;
+    height: 65px;
+    margin: 1.5% 3% 1.5% 3%;
+    font-size: 25px;
+    font-family: 標楷體;
+    background-image: linear-gradient(to top,#3A8524 ,#93e879);
+    border-style: none none groove none ; /* 改邊框樣式(上 右 下 左) */
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+.user_btn_icon{
+    height: 50px;
+}
+.user_btn:hover {  /* 設定鼠標停留在"查看內容"上所出現的懸浮框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+.order_select{
+    display: flex;
+    justify-content: center;
+    margin: 3%;
+}
+
+
+/* 商品完整簡介頁面 */
+/* 簡介圖片設置 */
+.fruit_intro_div {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+.fruit_intro_ALL_img_div {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    border:10px #3A8524 double;
+}
+.fruit_intro_main_img_container {
+    position: relative;
+    width: auto;
+}
+#fruit_intro_main_img {
+    width: 100%;
+    border-bottom: 1px #121212 solid;
+}
+.nav-button {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 8px;
+    margin: 5px;
+    color: #121212;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 50px;
+    user-select: none;
+    background-color: rgba(241, 241, 217, 0.519);
+    cursor: pointer;
+}
+.prev {
+    left: 0;
+    border-radius: 50px;
+}
+.next {
+    right: 0;
+    border-radius: 50px;
+}
+.fruit_intro_small_img_group {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+}
+.fruit_intro_small_img_div {
+    display: flex;
+    width: 180px;
+    height: 100px;
+    margin: 0px 8px 3px 8px; /*上左下右*/
+}
+.fruit_intro_small_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px #121212 solid;
+}
+.fruit_intro_small_img:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+}
+/* 簡介完整內容設置 */
+.fruit_intro_ALL_detail_div{
+    display: flex;
+    justify-self: start;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    border:10px #3A8524 double;
+}
+.fruit_intro_detail_title{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 標楷體;
+    font-size: 45px;
+}
+.fruit_intro_detail_price{
+    margin-left: 20px;
+    font-family: 標楷體;
+    font-size: 35px;
+}
+.fruits_intro_detail_intro{
+    margin-left: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-family: 標楷體;
+}
+.fruit_intro_detail_text_title{
+    width: 100px;
+    font-size: 20px;
+    font-family: 標楷體;
+}
+.fruit_intro_detail_text{
+    width: 700px;
+    font-size: 20px;
+    font-family: 標楷體;
+}
+.remain{
+    font-size: 17px;
+    align-items: start;
+}
+.add_cart{
+    color: #121212;
+    font-size: 16px;
+    font-family: 標楷體;
+    text-decoration: none;
+}
+.buy_now{
+    color: #121212;
+    font-size: 16px;
+    font-family: 標楷體;
+    text-decoration: none;
+}
+.相關商品{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.相關商品_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    font-size: 35px;
+    text-align: center;
+    border-top: 1.5px #121212 solid;
+    border-bottom: 1.5px #121212 solid;
+    margin: 35px auto; 
+    /* 確保整個區塊被置中-> 0 = 上下邊距為 0 ; auto = 左右邊距自動調整，會讓元素在其父元素的可用空間中水平居中。 */
+}
+/* 購物車(empty)頁面設計 */
+.cart_empty_text_div{
+    margin: auto;
+    width: 1300px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    border: 0.5px solid #aba8a8;
+}
+.cart_empty_keepBuy_btn_div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart_empty_keepBuy_btn{
+    margin: 20px; /* 上右下左 */
+    width: 100px;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #3A8524;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.cart_empty_keepBuy_btn:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-2px); /* 懸浮時上移一點以增強效果 */
+}
+
+
+/* 購物車(有增加物品)頁面設計 */
+#cart_title{
+    display: flex;
+    width: 220px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 60px auto;
+    font-size: 40px; 
+    border-top: 3.5px double #12121295;
+    border-bottom: 3.5px double #12121295;
+}
+.cart_table{
+    margin: 30px auto 5px auto;
+    border-bottom: 0.1px solid #9d9c9c;
+    text-align: center;
+    letter-spacing: 1px;
+    width: 1300px;
+    height: 100%;
+}
+.cart_table thead{
+    font-size: 20px;
+    font-weight: bold;  /* bold粗體字 */
+}
+.cart_table tbody{
+    font-size: 18px;
+    margin: 5px;
+    height: 100%;
+}
+.quantity-input{
+    width: 100px;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-radius: 10px;
+    border: 0.5px rgb(225, 220, 220) solid;
+}
+.remove{
+    text-decoration: none;
+    color: #121212;
+    font-size: 20px;
+    text-align: center;
+}
+.remove:hover{
+    color: #3A8524;
+}
+.cart_table tfoot{
+    font-size: 20px;
+    font-weight: bold;  /* bold粗體字 */
+}
+.cart_item{
+    width: 1300px;
+    height: 50px;
+}
+.coupon_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px auto 30px auto;
+    width: 1300px;
+    height: 50px;
+    border-bottom: 0.1px solid #9d9c9c;
+}
+.coupon_input{
+    width: 200px;
+    height: 30px;
+    background: none;
+    border-radius: 5px;
+    border: 0.3px solid rgba(212, 207, 207, 0.865);
+}
+.coupon_btn{
+    width: 100px;
+    height: 33.5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+    border-radius: 5px;
+    border: 0.1px solid rgba(212, 207, 207, 0.865);
+    margin-left: 10px;
+}
+.coupon_btn:hover{
+    color: #3A8524;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-0.5px); /* 懸浮時上移一點以增強效果 */
+}
+.renew_btn{
+    width: 100px;
+    height: 33.5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+    border-radius: 5px;
+    border: 0.1px solid rgba(212, 207, 207, 0.865);
+}
+.renew_btn:hover{
+    color: #3A8524;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*懸浮時顯示陰影; box-shadow: 水平偏移 垂直偏移 模糊半徑 顏色 */
+    transform: translateY(-0.5px); /* 懸浮時上移一點以增強效果 */
+}
+.cart_ditail_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 97%;
+    height: 100%;
+    margin: 20px;
+}
+.logistic_ditail_div{
+    width: 60%;
+    height: 330px;
+    margin: 10px;
+}
+#logistic_ditail_table{
+    color: #121212;
+    font-size: 15px;
+    border: 1px solid #2c880f;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+}
+.cart_table_title{
+    color: white;
+    font-size: 20px;
+    background-color: #3A8524;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+}
+.cart_ditail_table_title{
+    margin-top: 10px;
+}
+.取貨detail_input{
+    width: 300px;
+    text-align: center;
+    margin: 0.8%;
+}
+.product_total_price_All_div{
+    border: 1px solid #2c880f;
+    width: 40%;
+    height: 100%;
+    margin: 10px;
+}
+#product_total_price_table{
+    color: #121212;
+    font-size: 15px;
+    border-collapse: collapse; /* collapse使儲存格邊框不見。 */
+    width: 100%;
+    height: 100%;
+}
+.cart_ditail_table_title2{
+    text-align: left;
+    padding-top: 3%;
+    padding-left: 20%;
+}
+.price_table_th{
+    display: inline-block; /* 確保內部元素不會換行 */
+    text-align: right;
+    padding-top: 3%;
+    padding-right: 20%;
+    font-size: 16px; /* 字體大小 */
+    width: auto;
+}
+.checkout_div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.keepBuy_btn{
+    margin: 20px 30px 30px 0px; /* 上右下左 */
+    width: 100px;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #3A8524;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.keepBuy_btn:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-2px); /* 懸浮時上移一點以增強效果 */
+}
+.checkout_btn{
+    margin: 20px 0px 30px 30px; /* 上右下左 */
+    width: 100px;
+    height: 40px;
+    text-decoration: none;
+    text-align: center;
+    background-color: #3A8524;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.checkout_btn:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+    transform: translateY(-2px); /* 懸浮時上移一點以增強效果 */
+}
+/* 訂購須知 */
+#table_info {
+    margin: 3% auto; 
+    padding: 30px;
+    position: relative; 
+    width: 65%;
+    border: #121212 2px solid;
+}
+.circle_no {
+    padding:10px; 
+    border: solid gray 1px; 
+    border-radius: 30px; 
+    color:white; 
+    font-size: 20px;
+    background-color: #3A8524;
+}
+#fax_data {
+    display: inline-block; 
+    border: solid #121212 0.5px; 
+    text-align: start;
+    padding:5px;
+    padding-right: 20px;
+}
+#special {
+    text-align:center; 
+    font-size:16px; 
+    width:40%;
+    margin-left:30%; 
+    border: solid black 2px;
+}
+.fee_select {
+    text-align: center; 
+    margin: 3% auto 3% auto;
+    cursor: pointer;
+} 
+#fee_div1, #fee_div2 {
+    display:none; 
+    text-align:center; 
+    margin: 0px auto 3% auto;
+}
+.fee_table {
+    border: solid gray 1px; 
+    border-collapse: collapse; /* collapse 使儲存格邊框不出現*/
+    width:60%; 
+    margin-left:20%; 
+    margin-top: 5%; 
+}
+.fee_table td {
+    border: solid gray 1px; 
+    border-collapse: collapse;
+}
+.color_td {
+    color:white; 
+    background-color: #3A8524;
+    white-space: nowrap; /* 文字不換行 */
+}
+
+/*會員中心 貨物追蹤狀態table*/
+.orderCondition_table {
+    table-layout: fixed;
+    border: solid gray 1px; 
+    border-collapse: collapse; /* collapse 使儲存格邊框不出現 */
+    width:80%; 
+    margin-left:15%; 
+    margin-top: 5%; 
+    margin-bottom: 5%;
+    text-align: center;
+    white-space: nowrap; /* 文字不換行 */
+}
+.orderCondition_table td {
+    word-wrap: break-word; /* 避免文字超出單元格 */
+    overflow: hidden; /* 防止內容超過單元格 */
+    text-overflow: ellipsis; /* 超過部分顯示省略號 */
+    border: solid gray 1px; 
+    border-collapse: collapse;
+    width: 20%;
+    white-space: nowrap; /* 文字不換行 */
+}
+
+
+/* RWD響應式設置 */
+@media (max-width:1100px) { /*寬1100px以下套用*/   
+    header{
+        width: 100vw; 
+        height: 115px;
+        top: 0;
+        z-index: 10;
+    }
+    header.scrolled {
+        background-color: #2E2E2E; /* 背景色變為黑色 */
+        height: 115px; /* 縮小 header 高度 */
+    }
+    .navigation {
+        display: none; /* 默認隱藏 */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 105px;
+        left: 0;
+        background-color: rgba(5, 5, 5, 0.808);
+        text-align: center;
+        padding: 10px 0;
+    }
+    .menu-toggle {
+        display: flex; /* 顯示三横線圖標 */
+    }
+    .menu-toggle.active .bar:nth-child(2) {  /*:nth-child(2)指選擇 .bar 元素中的第2個子元素*/
+        opacity: 0;    /* 隱藏第二條橫線 */  
+    }
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg); 
+        /* translateY(7px)：沿 Y 軸移動 +11 像素。
+           rotate(45deg)：順時針方向旋轉 45 度。 */
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+    .navigation.active {
+        display: flex;   /* 顯示導覽菜單 */
+    }    
+    .navigation a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0; /* 底部邊框 */
+    }    
+    .side-nav{
+        flex-direction: row;
+        background-color: rgb(243, 243, 204);
+        width: 100vw;
+        height: auto;
+        border-radius: 0;
+        bottom: 0px;
+        right: 0px;
+    }  
+    .right_nav_item{
+        width: 100%; /* 確保占滿全寬 */
+        display: flex;
+        justify-content: space-around;
+    } 
+    .nav-item {
+        margin: 5px;
+        position: unset;
+    }
+    .scaling-svg-container{
+        display: flex;
+        flex-direction: column; 
+    }
+    .nav-item_img{ width: 35px; }     
+    .nav-item_img:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 懸浮時顯示陰影 */
+        transform: translateY(-5px); /* 懸浮時上移一點以增強效果 */
+    } 
+    .nav-item_text {
+        position: unset;
+        display: flex;
+        flex-direction: column;
+        right: 0px; /* 鼠標放上去內文顯示在右邊 */
+        background-color: transparent;/* 去掉背景色*/
+        color: #121212; 
+        padding: 0px; 
+        border-radius: 0px; 
+    }
+    #title_img_div{
+        height: 340px; 
+    }
+    #back_to_top{
+        width: 50px;
+        height: 58px;
+        bottom: 75px;
+        right: 8px;
+    }
+    .a3{
+        width: 55px;
+        font-size: 15px;
+        margin: 1%;
+    }
+    footer {margin-bottom: 70px; font-size: 12px; height: auto;}
+    #text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* 垂直居中 */
+        justify-content: center;  /* 水平居中 */
+        text-align: center;  /* 確保文字在父元素中水平居中 */
+    }
+    #text1 {
+        font-size: 25px;
+        font-family: 新細明體;
+        color: #292929;
+    }
+    #text2{ 
+        font-size: 16px; 
+        font-family: 新細明體; 
+        color: #74c77b; 
+    }
+    #page_title{
+        display: flex;
+        background-color: #292929;
+        border-bottom: 10px white double;
+        height: 400px;
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center; 
+        color: white;
+        font-size: 35px;
+        font-family: 標楷體;
+    }
+    #price_category_title{
+        text-align: center; 
+        font-family: 標楷體; 
+        font-size:20px;
+        margin: 30px;
+    }
+    #return_title{
+        text-align: center; 
+        font-family: 標楷體; 
+        font-size:20px;
+        margin: 30px;
+    }
+    #品牌介紹2 {text-align: center; font-size: 25px; font-family: 標楷體;}
+    #品牌介紹3 {text-align: center; font-size: 15px; font-family: 標楷體; padding-bottom: 20px;
+    }
+    #品牌介紹4 {text-align: center; font-size: 15px; font-family: 標楷體; padding-top: 30px;  padding-bottom: 20px;
+    }
+    #farmland_img_div{
+        flex-direction: column;
+        width: 100%;
+    }
+    #farmland_img{
+        width: 80%;
+        height: 100%;
+    }
+    #退換貨政策2 {text-align: left; font-family: 標楷體; font-size:15px;
+        padding-right: 30px; padding-left: 30px; padding-bottom: 20px;
+    }
+    #退換貨政策3 {text-align: left; font-family: 標楷體; font-size:15px;
+        padding-top: 30px; padding-left: 30px; padding-bottom: 20px;
+    }
+    #Line_img{align-items: center; text-align: center; font-size: 15px;}
+    #Line{text-align: center; color: #787878; font-size: 15px;  }
+    #farmland_img{
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+    }
+    .login_div {width: 100vw; height: calc(100vh - 260px); /* 減去 header 115px + footer 135px 高度 */}
+    .login_title {width: 40vw;}
+    .login_title1 {
+        color: rgb(241, 241, 217);
+        font-size: 35px;
+        font-family: 標楷體;
+    }
+    .login_title2 {
+        color: rgb(240, 240, 174);
+        font-size: 14px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .login_content{width: 60vw;}
+    .login_div input {width: 200px; font-size: 15px;}
+    .login_tip{font-size: 15px;}
+    .login_btn {width: 200px; font-size: 15px; height: 40px;}
+    .login_div button:hover {background-position-x: -200px; /* X與button寬一樣大小 取決於動畫換顏色的寬度 */}
+    .login_div span { font-size: 15px; }
+    /* 會員註冊頁面 */
+    .register_div {width: 100vw; height: calc(100vh - 260px); /* 減去 header 115px + footer 135px 高度 */}
+    .register_title {width: 40vw;}
+    .register_title1 {
+        color: rgb(241, 241, 217);
+        font-size: 25px;
+        font-family: 標楷體;
+    }
+    .register_title2 {
+        color: rgb(240, 240, 174);
+        font-size: 14px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .register_content{width: 60vw;}
+    .register_div input {width: 200px; font-size: 12px;}
+    .register_tip{font-size: 12px;}
+    .register_btn {width: 200px; font-size: 15px; height: 40px;}
+    .register_div button:hover {background-position-x: -200px; /* X與button寬一樣大小 取決於動畫換顏色的寬度 */}
+    .register_div span { font-size: 15px; }
+    .fruit_intro_div { 
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        padding: 5px;
+    }
+    .fruit_intro_ALL_img_div {
+        width: auto;
+        height: auto;
+        margin-right: 20px;
+        border:10px #3A8524 double;
+    }
+    .fruit_intro_main_img_container {
+        width: 100%;
+    }
+    .fruit_intro_small_img_group {
+        display: flex;
+        justify-content: space-between;
+    }
+    .fruit_intro_small_img_div {
+        display: flex;
+        width: auto;
+        height: auto;
+        margin: 5px;
+    }
+
+    /*會員中心畫面*/
+    #user_title{
+        border-radius:0 0 40% 40%;
+        height: 310px;  
+    }
+    #user-icon{
+        margin-top: 110px;
+        height: 100px;
+    }
+    .user_name{
+        font-size: 30px;
+    }
+    .user_btn{
+        width: 120px;
+        height: 55px;
+        margin: 1.5% 3% 1.5% 3%;
+    }
+    .user_btn_icon{
+        height: 30px;
+    }
+
+    /* 簡介完整內容設置 */
+    .fruit_intro_ALL_detail_div{
+        width: auto;
+        height: auto;
+        padding: 8px;
+    }
+    .fruit_intro_detail_title{ font-size: 33px; }
+    .fruit_intro_detail_price{ font-size: 25px; }
+    .fruit_intro_detail_text_title{
+        font-size: 17px;
+        padding-right:5px;
+    }
+    .fruit_intro_detail_text{ font-size: 17px; margin-left: 5px;}
+    .remain{font-size: 14px;}
+    .add_cart{ font-size: 14px; }
+    .buy_now{ font-size: 14px; }
+    .相關商品_title{
+        width: 215px;
+        font-size: 30px;
+        margin: 35px auto; 
+        /* 確保整個區塊被置中-> 35px = 上下邊距為 35px ; auto = 左右邊距自動調整，會讓元素在其父元素的可用空間中水平居中。 */
+    }
+    /* 購物車(empty)頁面設計 */
+    .cart_empty_text_div{
+        width: 100%;
+        height: 80px;
+        font-size: 14px;
+    }
+    .cart_empty_keepBuy_btn{
+        width: 80px;
+        height: 35px;
+    }
+    /* 購物車(有增加物品)頁面設計 */
+    #cart_title{
+        width: 155px;
+        margin: 30px auto;
+        font-size: 28px;
+    }
+    .cart_table{
+        margin: 30px auto 5px auto;
+        width: 100%;
+    }
+    .cart_table thead{
+        font-size: 14px;
+        font-weight: bold;  /* bold粗體字 */
+    }
+    .cart_table tbody{
+        font-size: 12px;
+        margin: 5px;
+    }
+    .remove{
+        font-size: 14px;
+    }
+    .cart_table tfoot{
+        font-size: 14px;
+    }
+    .coupon_div{
+        margin: 5px auto 20px auto;
+        width: 100%;
+        height: 35px;
+    }
+    .coupon_input{
+        margin: 0 auto 5px 25px;
+        width: 180px;
+        height: 25px;
+    }
+    .coupon_btn{
+        width: 80px;
+        height: 31px;
+        font-size: 12px;
+        margin-left: 3px;
+    }
+    .renew_btn{
+        width: 80px;
+        height: 31px;
+        font-size: 12px;
+        cursor: pointer;
+        background: none;
+        border: 0.3px solid rgba(212, 207, 207, 0.865);
+        margin: 0 10px 5px auto;
+    }
+    .cart_ditail_div{
+        padding-bottom: 30px;
+    }
+    .logistic_ditail_div{
+        height: 200px;
+        margin: 10px;
+    }
+    #logistic_ditail_table{
+        font-size: 12px;
+    }
+    .cart_table_title{
+        font-size: 15px;
+        height: 30px;
+    }
+    .cart_ditail_table_title{
+        margin-top: 10px;
+    }
+    .取貨detail_input{
+        width:130px;
+        margin-bottom: 10px;
+    }
+    .product_total_price_All_div{
+        margin: 10px;
+    }
+    #product_total_price_table{
+        font-size: 12px;
+    }
+    .cart_ditail_table_title2{
+        text-align: left;
+        padding-top: 2%;
+        padding-left: 10%;
+    }
+    .price_table_th{
+        text-align: right;
+        padding-top: 2%;
+        padding-right: 10%;
+    }
+    .checkout_div{
+        width: 100%;
+        justify-content: center;
+    }
+    .keepBuy_btn{
+        width: 70px;
+        height: 25px;
+        margin: 10px;
+    }
+    .checkout_btn{
+        width: 70px;
+        height: 25px;
+        margin: 10px;
+    }
+    /* 訂購須知 */
+    #table_info {
+        margin: 1.5% auto; 
+        width: 90%;
+    }
+    .circle_no {
+        font-size: 17px;
+    }
+    #special {
+        font-size:13px; 
+        width:70%;
+        margin:3% auto; 
+    }
+    .fee_select {
+        text-align: center; 
+        margin: 3% auto 3% auto;
+        cursor: pointer;
+    } 
+    #fee_div1, #fee_div2 {
+        display:none; 
+        text-align:center; 
+        margin: 0px auto 3% auto;
+    }
+    .fee_table {
+        border: solid gray 1px; 
+        border-collapse: collapse; /* collapse 使儲存格邊框不出現*/
+        width:60%; 
+        margin-left:20%; 
+        margin-top: 5%; 
+    }
+    .fee_table td {
+        border: solid gray 1px; 
+        border-collapse: collapse;
+    }
+    .color_td {
+        color:white; 
+        background-color: #3A8524;
+    }
+}
+

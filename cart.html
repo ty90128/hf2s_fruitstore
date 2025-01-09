@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <title>HF2S水果 - 購物車</title>
+        <LINK rel="SHORTCUT ICON" href="./hf2s_img/HF2S_small_logo.png"> <!--改變網頁標籤左邊的logo圖標-->
+        <link rel="stylesheet" href="fruitstore.css" type="text/css">
+        <script src="fruitstore.js" language="javascript"></script>
+    </head>
+<body>
+    <header>
+        <nav class="title"> 
+            <div class="menu-toggle" id="menu-toggle">   <!-- RWD響應式的隱藏三橫線菜單按鈕 -->
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <a href="fruitstore.html" class="logo"><img src="./hf2s_img/HF2S_logo.png"  alt="HF2S_Logo"></a>
+            <div class="navigation" id="navigation">
+                <a href="brank_intro.html">品牌介紹</a>
+                <a href="category.html">商品分類</a>
+                <a href="user_login.html" id="memberCenter">會員中心</a>
+                <a href="custermerService.html">線上客服</a>
+                <a href="buy_rules.html">訂購須知</a>
+                <a href="return.html">退換貨政策</a>
+            </div>
+            <a href="cart.html" class="cart"><img src="./hf2s_img/cart.png" width="65px" height="55px" alt="Cart"></a>
+        </nav>
+        <!-- 右側選單 -->
+        <nav class="side-nav " id="side-nav">
+            <ul class="right_nav_item">
+                <li class="nav-item">
+                    <a href="#" id="copyToClipBoard" class="nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/copy.png">
+                            <div class="nav-item_text"><span>copyLink</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://www.facebook.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/fb.png">
+                            <div class="nav-item_text"><span>facebook</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('https://www.instagram.com/'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/ig.png">
+                            <div class="nav-item_text"><span>instagram</span></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript: void(window.open('http://line.naver.jp/R/msg/text/?'));" class=" nav-link">
+                        <div class="scaling-svg-container">
+                            <img class="nav-item_img" src="hf2s_img/line.png">
+                            <div class="nav-item_text"><span>line</span></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <p ><a href="#"><img id="back_to_top" src="./hf2s_img/back_to_top.png"></Back></a></p> <!--設定返回到最上端的icon按鈕-->
+        </nav>
+    </header>
+    <main>
+        <div style="background-color: #121212; width: 100vw; height: 115px;"></div>
+        <div id="cart_title">購 物 車</div>
+        <table id="cart_table" class="cart_table">
+            <thead>
+                <tr>
+                    <td style="border-bottom: 0.1px solid #4e883c" class="product_remove"><a href="cart_empty.html" id="clear_cart_btn" class="removeAll"><img src="./hf2s_img/delete_icon.png"></a></td>
+                    <th style="border-bottom: 0.1px solid #4e883c" class="product_name">商&ensp;&ensp;品</th>
+                    <th style="border-bottom: 0.1px solid #4e883c" class="product_price">價&ensp;&ensp;格</th>                    
+                    <th style="border-bottom: 0.1px solid #4e883c" class="product_quantity">數&ensp;&ensp;量</th>
+                    <th style="border-bottom: 0.1px solid #4e883c" class="product_subtotal">小&ensp;&ensp;計</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr class="cart_item">
+                    <td class="product_remove">&times;</td>
+                    <td class="product_name"></td>
+                    <td class="product_price"></td>
+                    <td class="product_quantity"><input type="number" class="quantity-input" value="${quantity}" min="1" max="10" data-product-id="${item.product_id}"></td>
+                    <td class="product_subtotal"></td>
+                </tr>
+            </tbody>            
+        </table>
+        <div class="coupon_div">            
+            <div>
+                <input id="coupon_input" class="coupon_input"></input>
+                <button id="coupon_btn" class="coupon_btn">使用優惠券</button>
+                <button id="coupon_remove_btn" class="coupon_btn" style="display: none;">移除優惠券</button>
+            </div>
+            <button id="renew_btn" class="renew_btn">更新購物車</button>
+        </div>
+        <div class="cart_ditail_div">
+            <div class="logistic_ditail_div">
+                <table id="logistic_ditail_table">
+                    <thead class="cart_table_title">
+                        <tr>
+                            <th>選擇送貨及付款方式</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cart_ditail_table_title">
+                            <th>取貨人<br><input id="取貨人" class="取貨detail_input" type="text"></th>
+                        </tr>
+                        <tr class="cart_ditail_table_title">
+                            <th>取貨人連絡電話<br><input id="連絡電話" class="取貨detail_input" type="text"></th>
+                        </tr>
+                        <tr class="cart_ditail_table_title">
+                            <th>取貨E-mail<br><input id="取貨E-mail" class="取貨detail_input" type="text"></th>
+                        </tr>
+                        <tr class="cart_ditail_table_title">
+                            <th>取貨地址<br><input id="取貨地址" class="取貨detail_input" type="text"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product_total_price_All_div">
+                <table id="product_total_price_table">
+                    <thead class="cart_table_title">
+                        <tr>
+                            <th>選擇送貨及付款方式</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="cart_ditail_table_title2">小計</th>
+                            <th class="price_table_th"><span id="小計"></span></th>
+                        </tr>
+                        <tr>
+                            <th class="cart_ditail_table_title2">運費</th>
+                            <th class="price_table_th"><span id="運費"></span></th>
+                        </tr>
+                        <tr>
+                            <th class="cart_ditail_table_title2">使用優惠折扣</th>
+                            <th class="price_table_th"><span id="優惠折扣"></span></th>
+                        </tr>
+                        <tr>
+                            <th class="cart_ditail_table_title2">合計</th>
+                            <th  class="price_table_th"><span id="合計"></span></th>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr style="border: 0.1px solid #4e883c; width: 80%; margin-top: 30px;">
+                <div class="checkout_div">            
+                    <a href="all_product.html"><button class="keepBuy_btn">繼續購物</button></a>
+                    <button id="checkout_btn" class="checkout_btn">送出訂單</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <p><img src="./hf2s_img/isu.png" width="35" style=vertical-align:middle> Copyright&copy;ISU-MIS股份有限公司2024
+            <br>
+            服務電話&ensp;0906-666-999
+        </p>  
+    </footer>   
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartData = localStorage.getItem('cart');
+        const authToken = localStorage.getItem('authToken');
+        const user_id = localStorage.getItem('user_id');
+
+        fetch('showCart.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    populateCartTable(data);
+                    calculateCartSummary(data);
+                    localStorage.setItem('cart', JSON.stringify(data));
+                } else {
+                    window.location.href = 'cart_empty.html'; // 轉到空購物車頁面
+                }
+            })
+            .catch(error => console.error('載入購物車資料時發生錯誤:', error));
+        
+
+        // 動態填充購物車表格
+        function populateCartTable(cartItems) {
+            const tableBody = document.querySelector('#cart_table tbody');
+            tableBody.innerHTML = ''; // 清空表格
+
+            cartItems.forEach(item => {
+                const productName = item.pname || '未定義商品';
+                const productPrice = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.amount) || 0;
+                const subtotal = productPrice * quantity;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><button class="remove" data-product-name="${productName}">×</button></td>
+                    <td>${productName}</td>
+                    <td>NT$ ${productPrice}</td>
+                    <td class="product_quantity">
+                        <input type="number" class="quantity-input" value="${quantity}" min="1" max="10" data-product-name="${productName}" data-product-id="${item.product_id}">
+                    </td>
+                    <td>NT$ ${subtotal}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+
+        const SHIPPING_COST = 160;
+        // 計算購物車總金額
+        function calculateCartSummary(cartItems) {
+            let subtotal = 0;
+
+            cartItems.forEach(item => {
+                const productPrice = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.amount) || 0;
+                subtotal += productPrice * quantity;
+            });
+
+            const couponCode = document.querySelector('.coupon_input').value;
+            const discount = calculateDiscount(subtotal, couponCode);
+            const total = subtotal + SHIPPING_COST - discount;
+
+            document.getElementById('小計').textContent = `NT$${subtotal}`;
+            document.getElementById('運費').textContent = `NT$${SHIPPING_COST}`;
+            document.getElementById('優惠折扣').textContent = `NT$${discount}`;
+            document.getElementById('合計').textContent = `NT$${total}`;
+
+            // 顯示/隱藏移除優惠券按鈕
+            if (discount > 0) {
+                document.getElementById('coupon_remove_btn').style.display = 'inline-block';
+            } else {
+                document.getElementById('coupon_remove_btn').style.display = 'none';
+            }
+        }
+
+        // 計算折扣邏輯
+        function calculateDiscount(subtotal, couponCode) {
+            if (!couponCode) return 0;
+
+            switch(couponCode) {
+                case '1': 
+                    if (subtotal >= 4000) {
+                        return subtotal * 0.2;
+                    }
+                    break;
+                case '2': 
+                    if (subtotal >= 2000) {
+                        return 50;
+                    }
+                    break;
+                default:
+                    return 0; 
+            }
+            return 0;
+        }
+
+        // 監聽數量輸入框的變化並觸發更新
+        document.querySelector('#cart_table tbody').addEventListener('change', function (e) {
+            if (e.target && e.target.classList.contains('quantity-input')) {
+                const newQuantity = parseInt(e.target.value);
+                const productName = e.target.getAttribute('data-product-name'); // 使用 product_name
+
+                // 確保輸入的數量有效
+                if (isNaN(newQuantity) || newQuantity < 1) {
+                    alert('請輸入有效的數量！');
+                    e.target.value = 1; // 重設為最小數量
+                    return;
+                }
+
+                // 調用更新數量的函數
+                updateCartItemQuantity(productName, newQuantity);
+            }
+        });
+
+        // 向後端發送請求更新數量
+        function updateCartItemQuantity(productName, newQuantity) {
+            fetch('updateItemQuantity.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product_name: productName, amount: newQuantity }) // 使用 product_name
+            })
+            .then(response => {
+                // 將回應內容印出來，查看是否是 HTML 而非 JSON
+                return response.text();  // 使用 text() 來獲取原始回應內容
+            })
+            .then(text => {
+                try {
+                    // 嘗試將回應內容解析為 JSON
+                    const data = JSON.parse(text);
+                    if (data.success) {
+                        // 更新購物車資料
+                        populateCartTable(data.cartItems);
+                        calculateCartSummary(data.cartItems);
+                        localStorage.setItem('cart', JSON.stringify(data.cartItems));
+                    } else {
+                        alert('更新數量失敗');
+                    }
+                } catch (error) {
+                    console.error('解析回應時發生錯誤:', error);
+                    console.log('回應內容:', text);  // 打印出錯誤的內容
+                }
+            })
+            .catch(error => console.error('更新商品數量時發生錯誤:', error));
+        }
+
+        // 使用優惠券的按鈕事件
+        document.getElementById('coupon_btn').addEventListener('click', function() {
+            const couponCode = document.getElementById('coupon_input').value;
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            calculateCartSummary(cartItems);  // 重新計算總金額和折扣
+        });
+
+        // 移除優惠券的按鈕事件
+        document.getElementById('coupon_remove_btn').addEventListener('click', function() {
+            document.getElementById('coupon_input').value = ''; // 清空優惠券輸入框
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            calculateCartSummary(cartItems); // 重新計算總金額
+        });
+
+
+        // 處理移除商品
+        document.querySelector('#cart_table tbody').addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('remove')) {
+                const productName = e.target.getAttribute('data-product-name');
+                removeItemFromCart(productName);
+            }
+            // 移除單項商品並更新購物車
+            function removeItemFromCart(productName) {
+                fetch('removeItem.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: productName })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // 更新購物車表格
+                        if (data.cartItems && data.cartItems.length > 0) {
+                            populateCartTable(data.cartItems);
+                            calculateCartSummary(data.cartItems);
+                            localStorage.setItem('cart', JSON.stringify(data.cartItems));
+                        } else {
+                            window.location.href = 'cart_empty.html'; // 轉到空購物車頁面
+                        }
+                    } else {
+                        alert('刪除商品失敗');
+                    }
+                })
+                .catch(error => console.error('刪除商品時發生錯誤:', error));
+            }
+        });
+
+        // 全部刪除功能
+        document.getElementById('clear_cart_btn').addEventListener('click', function() {
+            fetch('removeAllItems.php', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        populateCartTable([]);
+                        calculateCartSummary([]);
+                        localStorage.setItem('cart', JSON.stringify([]));
+                        window.location.href = 'cart_empty.html'; // 轉到空購物車頁面
+                    } else {
+                        alert('無法清空購物車');
+                    }
+                })
+                .catch(error => console.error('清空購物車時發生錯誤:', error));
+        });
+
+
+        //更新購物車
+        document.getElementById('renew_btn').addEventListener('click', function() {
+            location.reload();
+        });
+
+        // 送出訂單
+        document.getElementById('checkout_btn').addEventListener('click', function () {
+            if (!user_id) {
+                alert('用戶 ID 缺失，請重新登入');
+                return;
+            }
+
+            const personDetails = {
+                name: document.getElementById('取貨人').value,
+                phone: document.getElementById('連絡電話').value,
+                email: document.getElementById('取貨E-mail').value,
+                address: document.getElementById('取貨地址').value
+            };
+
+            if(personDetails.name === '' || personDetails.phone === '' || personDetails.email === '' || personDetails.address === '') {
+                alert('請填寫完整取貨人資訊');
+                return;
+            }
+
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cartItems.length === 0) {
+                alert('購物車是空的，無法提交訂單');
+                return;
+            }
+            const orderDetails = cartItems.map(item => {
+                return {
+                    pname: item.pname,
+                    price: item.price,
+                    amount: item.amount 
+                };
+            });
+            const totalElement = document.getElementById('合計');
+            if (!totalElement.textContent) {
+                alert('總金額缺失，請確認購物車金額');
+                return;
+            }
+            const totalText = totalElement.textContent.trim();
+            const total = String(parseFloat(totalText.replace('NT$', '').trim()));
+            if (!total || isNaN(total)) {
+                alert('總金額格式錯誤，請確認金額');
+                return;
+            }
+            console.log(total); // 查看是否有正確的數值
+            const orderData = {
+                user_id: user_id,
+                personDetails: personDetails,
+                orderDetails: orderDetails,
+                total: total
+            };
+            // 檢查資料是否正確
+            console.log(orderData);
+            console.log("Before sending:", JSON.stringify(orderData)); // 查看 JSON 字串
+
+
+            fetch('getOrder.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)  // 確保資料是轉換成 JSON 格式
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('網路回應非成功狀態');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // 訂單成功後，清空購物車並更新頁面
+                    localStorage.removeItem('cart'); // 清空購物車資料
+                    alert('訂單提交成功!');
+                    window.location.href = 'cart_empty.html'; // 轉到訂單確認頁面
+                } else {
+                    alert('訂單提交失敗: ' + (data.error || '未知錯誤'));
+                }
+            })
+            .catch(error => console.error('提交訂單時發生錯誤:', error));
+        });
+
+    });
+</script>  
+</html>
